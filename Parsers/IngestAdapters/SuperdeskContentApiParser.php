@@ -106,8 +106,6 @@ class SuperdeskContentApiParser extends AbstractParser
             $entries[] = new SuperdeskContentApiParser($package);
         }
 
-        // ladybug_dump($entries); exit;
-
         return $entries;
     }
 
@@ -269,7 +267,6 @@ class SuperdeskContentApiParser extends AbstractParser
         return null;
     }
 
-    // TODO: Check valid instructions for NewsML
     /**
      * Get instruction, mainly for NewsML, but can be implemented in other feed
      * types aswell. Allowed values are (should all be in lowercase):

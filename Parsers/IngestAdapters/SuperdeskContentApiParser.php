@@ -107,10 +107,11 @@ class SuperdeskContentApiParser extends AbstractParser
         foreach ($data as $package) {
 
             $entryPackage = new SuperdeskContentApiParser($package);
+            $images = $entryPackage->getImages();
 
             if (
                 property_exists($package->associations, 'main') &&
-                empty($entryPackage->getImages())
+                empty($images)
             ) {
                 continue;
             }

@@ -105,7 +105,17 @@ class SuperdeskContentApiParser extends AbstractParser
 
         // Convert all $data into entryes
         foreach ($data as $package) {
-            $entries[] = new SuperdeskContentApiParser($package);
+
+            $entryPackage = new SuperdeskContentApiParser($package);
+
+            if (
+                property_exists($package->associations, 'main') &&
+                empty($entryPackage->getImages())
+            ) {
+                continue;
+            }
+
+            $entries[] = $entryPackage;
         }
 
         return $entries;
@@ -390,10 +400,22 @@ class SuperdeskContentApiParser extends AbstractParser
      */
     public function getImages()
     {
-        // TODO: Get image items from package
-        $images = $this->getAssociationsByType(self::DEFAULT_CATEGORY, self::TYPE_PICTURE);
+        $images = array();
+        $imagesRaw = $this->getAssociationsByType(self::DEFAULT_CATEGORY, self::TYPE_PICTURE);
 
-        return array();
+        foreach ($imagesRaw as $imageRaw) {
+
+            if ($imageRaw->pubstatus != 'usable') continue;
+
+            $images[] = array(
+                'location' => $imageRaw->renditions->baseImage->href,
+                'description' => $imageRaw->description_text,
+                'copyright' => $imageRaw->byline,
+                'photographer' => $imageRaw->byline
+            );
+        }
+
+        return $images;
     }
 
     /**

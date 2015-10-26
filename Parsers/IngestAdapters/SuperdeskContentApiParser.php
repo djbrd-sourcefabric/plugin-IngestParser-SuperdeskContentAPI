@@ -16,6 +16,7 @@ use Superdesk\ContentApiSdk\ContentApiSdk;
 use Superdesk\ContentApiSdk\Client\ClientInterface;
 use Superdesk\ContentApiSdk\Exception\ContentApiException;
 use Superdesk\ContentApiSdk\Data\Package;
+use Newscoop\NewscoopException;
 
 /**
  * Parser for the Superdesk Content API
@@ -93,12 +94,13 @@ class SuperdeskContentApiParser extends AbstractParser
         $sdk = new ContentApiSdk($client);
         $parameters = array(
             // 'start_date' => date('Y-m-d', strtotime('-7 days'))
-            'start_date' => '2015-01-01'
+            'start_date' => '2015-10-25'
         );
 
         try {
             $data = $sdk->getPackages($parameters, true);
         } catch(ContentApiException $e) {
+            throw new NewscoopException($e->getMessage(), $e->getCode(), $e);
         }
 
         // Convert all $data into entryes

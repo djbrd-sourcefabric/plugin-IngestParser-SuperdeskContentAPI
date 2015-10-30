@@ -2,7 +2,7 @@
     "name": "newscoop/ingest-parser-superdesk-content-api",
     "description": "Superdesk Content API Parsers for the Newscoop Ingest plugin.",
     "keywords": ["newscoop", "cms", "superdesk", "ingest", "parser", "ninjs"],
-    "version": "0.1.2",
+    "version": "0.1.3",
     "type": "newscoop-plugin",
     "license": "GPL-3.0",
     "authors": [

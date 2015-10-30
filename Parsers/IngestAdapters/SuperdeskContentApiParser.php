@@ -103,7 +103,7 @@ class SuperdeskContentApiParser extends AbstractParser
             throw new NewscoopException($e->getMessage(), $e->getCode(), $e);
         }
 
-        // Convert all $data into entryes
+        // Convert all $data into entries
         foreach ($data as $package) {
 
             $entryPackage = new SuperdeskContentApiParser($package);
@@ -290,8 +290,11 @@ class SuperdeskContentApiParser extends AbstractParser
     public function getInstruction()
     {
         switch ($this->getStatus()) {
-            case 'cancelled':
+            case 'canceled':
                 $instruction = 'delete';
+                break;
+            case 'withheld':
+                $instruction = 'unpublish';
                 break;
             default:
                 $instruction = null;

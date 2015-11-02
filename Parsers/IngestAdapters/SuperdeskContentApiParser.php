@@ -93,8 +93,8 @@ class SuperdeskContentApiParser extends AbstractParser
         $client = new GuzzleClient($clientConfig);
         $sdk = new ContentApiSdk($client);
         $parameters = array(
-            // 'start_date' => date('Y-m-d', strtotime('-7 days'))
-            'start_date' => '2015-10-25'
+            'start_date' => date('Y-m-d', strtotime('-3 days'))
+            // 'start_date' => '2015-10-25'
         );
 
         try {

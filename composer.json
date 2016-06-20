@@ -1,0 +1,26 @@
+{
+    "name": "newscoop/ingest-parser-superdesk-content-api",
+    "description": "Superdesk Content API Parsers for the Newscoop Ingest plugin.",
+    "keywords": ["newscoop", "cms", "superdesk", "ingest", "parser", "ninjs"],
+    "version": "0.1.4",
+    "type": "newscoop-plugin",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Mischa Gorinskat",
+            "email": "mischa.gorinskat@sourcefabric.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "newscoop/plugins-installer": ">=v0.2",
+        "newscoop/ingest-plugin-bundle": ">=0.4",
+        "superdesk/contentapi-sdk-php": "dev-master#63ee129986a76b5233db7250a68fa82b7c10d275",
+        "guzzle/guzzle":"v3.9.2"
+    },
+    "autoload": {
+        "psr-0": { "Newscoop\\IngestParserSuperdeskContentAPIBundle\\NewscoopIngestParserSuperdeskContentAPIBundle": "" }
+    },
+    "target-dir": "Newscoop/IngestParserSuperdeskContentAPIBundle",
+    "minimum-stability": "dev"
+}
